@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Jerry Lu">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jerry Lu - Custom Dialogs</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script type="module">
+      import {custom_dialogs} from './js/customdialogs.js';
+      document.addEventListener('DOMContentLoaded', custom_dialogs);
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.0/purify.min.js"></script>
+  </head>
+  
+  <body>
+
+    <header>
+      <h1>Custom Dialog</h1>
+    </header>
+
+    <div class="mainContent">
+      
+    <main>
+      <button id="alert" type="button">Alert</button>
+      <button id="confirm" type="button">Confirm</button>
+      <button id="prompt" type="button">Prompt</button><hr><br>
+      <output></output><br><br>
+      <dialog>
+        <p></p>
+        <input type="text"><br><br>
+        <button>OK</button>
+        <button>Cancel</button>
+      </dialog>
+    </main>
+
+    <footer>
+
+    </footer>
+
+    </div>
+
+  </body>
+
+</html>
