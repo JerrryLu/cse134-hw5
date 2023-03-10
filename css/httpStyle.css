@@ -1,0 +1,7 @@
+form input, form textarea {
+  margin-bottom: 20px;
+}
+
+output {
+  white-space: pre;
+}

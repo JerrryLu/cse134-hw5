@@ -15,21 +15,23 @@
     <meta charset="UTF-8">
     <meta name="author" content="Jerry Lu">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jerry Lu</title>
+    <title>Jerry Lu - HTTP</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/browserStyle.css" media="(min-width: 640px)">
     <link rel="stylesheet" href="css/mobileStyle.css" media="(max-width: 639.9px)">
+    <link rel="stylesheet" href="css/httpStyle.css">
     <link rel="preload" href="/fonts/kaushanscript-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <script type="module" src="js/methodtest.js"></script>
   </head>
   
   <body>
 
     <header>
-      <h1>Jerry Lu</h1>
+      <h1>HTTP</h1>
       <nav>
         <ul class="navBar">
-          <li id="activePage"><a href="index.html">Home</a></li>
+          <li><a href="index.html">Home</a></li>
           <li><a href="projects.html">Projects</a></li> 
           <li><a href="education.html">Education</a></li>
           <li><a href="skills.html">Skills</a></li>
@@ -41,22 +43,25 @@
     <div class="mainContent">
       
     <main>
-      <img src="images/Jerry_Lu_Face.jpg" alt="An above the shoulder shot of Jerry looking forward with a striped red shirt">
-      <p>Hi, I'm a fourth year Computer Engineering major in Warren. I really enjoy learning about how the programs I use or the games I play work. 
-        I like <code>JavaScript</code> as a language because I've been using it a lot recently. I also like its interactions with <code>HTML</code> and <code>CSS</code>.</p>
+      <form onsubmit="return false;">
+        <label for="id">ID:</label><br>
+        <input type="number" id="id"><br>
+        <label for="article_name">Article Name:</label><br>
+        <input type="text" id="article_name"><br>
+        <label for="article_body">Article Body:</label><br>
+        <textarea id="article_body"></textarea><br>
+        <input type="text" id="date" hidden readonly>
+        <button type="submit" id="postBtn">Post</button>
+        <button type="submit" id="getBtn">Get</button>
+        <button type="submit" id="putBtn">Put</button>
+        <button type="submit" id="deleteBtn">Delete</button>
+      </form>
       <br>
-      <aside><i>Fun Fact:</i> The first language I used was <code>LUA</code>.</aside>
-      <br>
-      <a href="methodtest.html">HTTP for HW4</a>
+      <hr>
+      <output id="response"></output>
     </main>
 
     <footer>
-      <br>
-      <hr>
-      <nav>
-        <a href="contact.html"><b>Contact me!</b></a>
-      </nav>
-      <br>
     </footer>
 
     </div>
