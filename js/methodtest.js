@@ -1,3 +1,5 @@
+import {edit_required_inputs, write_output} from './ioEdit.js';
+
 document.addEventListener('DOMContentLoaded', main);
 
 function main() {
@@ -5,9 +7,6 @@ function main() {
   let get_button = document.getElementById("getBtn");
   let put_button = document.getElementById("putBtn");
   let delete_button = document.getElementById("deleteBtn");
-
-  let date = document.getElementById("date");
-  date.value = new Date();
 
   let post_button_click = () => {
     post_or_put_button_click(true);
@@ -41,12 +40,15 @@ async function post_or_put_button_click(post) {
   let id_input = document.getElementById("id");
   let article_name_input = document.getElementById("article_name");
   let article_body_input = document.getElementById("article_body");
-  let date_input = document.getElementById("date");
 
   // If any of the inputs are empty, browser will ask for missing inputs
   if(id_input.value == "" || article_name_input.value == "" || article_body_input.value == "") {
     return;
   }
+
+  // Set the date
+  let date_input = document.getElementById("date");
+  date_input.value = new Date();
 
   // Create POST body
   let input_object = {
@@ -64,6 +66,7 @@ async function post_or_put_button_click(post) {
   date_input.value = "";
 
   let response;
+  
   if(post) {
     response = await fetch("https://httpbin.org/post", {
       method: "POST",
@@ -92,11 +95,13 @@ async function get_or_delete_button_click(get) {
   let response_output = document.getElementById("response");
   response_output.innerHTML = "";
 
+  // Gather all the inputs
   let id_input = document.getElementById("id");
   let article_name_input = document.getElementById("article_name");
   let article_body_input = document.getElementById("article_body");
   let date_input = document.getElementById("date");
   
+  // If any of the inputs are empty, browser will ask for missing inputs
   edit_required_inputs(false);
   id_input.setAttribute("required", "");
   let id_input_value = id_input.value;
@@ -112,6 +117,7 @@ async function get_or_delete_button_click(get) {
   date_input.value = "";
 
   let response;
+
   if(get) {
     response = await fetch("https://httpbin.org/get?id=" + id_input_value, {
       method: "GET",
@@ -125,36 +131,4 @@ async function get_or_delete_button_click(get) {
   response = await response.json();
   
   write_output(response);
-}
-
-// Make all the inputs required or not required
-function edit_required_inputs(add_required) {
-  let id_input = document.getElementById("id");
-  let article_name_input = document.getElementById("article_name");
-  let article_body_input = document.getElementById("article_body");
-
-  if(add_required) {
-    id_input.setAttribute("required", "");
-    article_name_input.setAttribute("required", "");
-    article_body_input.setAttribute("required", "");
-  }
-  else {
-    id_input.removeAttribute("required");
-    article_name_input.removeAttribute("required");
-    article_body_input.removeAttribute("required");
-  }
-}
-
-// Print out the object with 4 spaces as tabs
-function write_output(response) {
-  let response_output = document.getElementById("response");
-  let output_html = "Response:";
-  if(response.data) {
-    response.data = JSON.parse(response.data);
-    output_html += " (data field should be a JSON string but has been turned into an object for readbility)";
-  }
-  output_html += "\n\n";
-  output_html += JSON.stringify(response, null, 4);
-  
-  response_output.innerHTML = output_html;
 }
