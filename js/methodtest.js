@@ -67,6 +67,7 @@ async function post_or_put_button_click(post) {
 
   let response;
   
+  // Set the ipnut object as the body and fetch
   if(post) {
     response = await fetch("https://httpbin.org/post", {
       method: "POST",
@@ -99,15 +100,24 @@ async function get_or_delete_button_click(get) {
   let id_input = document.getElementById("id");
   let article_name_input = document.getElementById("article_name");
   let article_body_input = document.getElementById("article_body");
-  let date_input = document.getElementById("date");
+
   
-  // If any of the inputs are empty, browser will ask for missing inputs
+  // If the id is empty, the browser will ask for an id input
   edit_required_inputs(false);
   id_input.setAttribute("required", "");
-  let id_input_value = id_input.value;
-  if(id_input_value == "") {
+  if(id_input.value == "") {
     return;
   }
+
+  // Set the date
+  let date_input = document.getElementById("date");
+  date_input.value = new Date();
+
+  // Set up input object that will be put on the URL
+  let input_object = {
+    id: id_input.value,
+    date: date_input.value,
+  };
 
   // Clear input values
   id_input.removeAttribute("required");
@@ -118,13 +128,18 @@ async function get_or_delete_button_click(get) {
 
   let response;
 
+  // Set up the URL with the parameters in the URL and fetch
   if(get) {
-    response = await fetch("https://httpbin.org/get?id=" + id_input_value, {
+    let get_url = new URL("https://httpbin.org/get");
+    get_url.search = new URLSearchParams(input_object);
+    response = await fetch(get_url, {
       method: "GET",
     });
   }
   else {
-    response = await fetch("https://httpbin.org/delete?id=" + id_input_value, {
+    let delete_url = new URL("https://httpbin.org/delete");
+    delete_url.search = new URLSearchParams(input_object);
+    response = await fetch(delete_url, {
       method: "DELETE",
     });
   }
