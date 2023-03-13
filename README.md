@@ -1,23 +1,14 @@
 Jerry Lu A15923516
     
 # Main Website:  
-https://subtle-centaur-4c56ca.netlify.app/
+https://leafy-donut-920963.netlify.app/
     
-## Files used for Native Dialogs:  
-* nativedialogs.html  
-* js/nativedialogs.js
+## Files used for HTTP:  
+* methodtest.html  
+* js/methodtest.js  
+* js/ioEdit.js  
+* css/httpStyle.css
     
-## Files used for Custom Dialogs:
-* customdialogs.html  
-* js/customdialogs.js
-    
-## Files used for CRUD:  
-* crud.html  
-* js/blog.js  
-* js/customdialogs.js
-    
-## Files used for styled CRUD:  
-* styledcrud.html  
-* js/blog.js  
-* js/customdialogs.js  
-* css/crudStyle.css
+## Files used for Web Component:
+* webcomponent.html  
+* js/ButtonCount.js
