@@ -134,6 +134,9 @@ async function get_or_delete_button_click(get) {
     get_url.search = new URLSearchParams(input_object);
     response = await fetch(get_url, {
       method: "GET",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
     });
   }
   else {
@@ -141,6 +144,9 @@ async function get_or_delete_button_click(get) {
     delete_url.search = new URLSearchParams(input_object);
     response = await fetch(delete_url, {
       method: "DELETE",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
     });
   }
   response = await response.json();

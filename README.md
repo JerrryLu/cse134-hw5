@@ -1,5 +1,7 @@
 Jerry Lu A15923516
     
+Links for HTTP and the Web Component can be found in the footer
+    
 # Main Website:  
 https://leafy-donut-920963.netlify.app/
     
