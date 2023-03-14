@@ -100,23 +100,20 @@ async function get_or_delete_button_click(get) {
   let id_input = document.getElementById("id");
   let article_name_input = document.getElementById("article_name");
   let article_body_input = document.getElementById("article_body");
-
-  
-  // If the id is empty, the browser will ask for an id input
-  edit_required_inputs(false);
-  id_input.setAttribute("required", "");
-  if(id_input.value == "") {
-    return;
-  }
-
-  // Set the date
   let date_input = document.getElementById("date");
-  date_input.value = new Date();
+  
+  // If the id is empty and it is delete, the browser will ask for an id input
+  edit_required_inputs(false);
+  if(!get) {
+    id_input.setAttribute("required", "");
+    if(id_input.value == "") {
+      return;
+    }
+  }
 
   // Set up input object that will be put on the URL
   let input_object = {
     id: id_input.value,
-    date: date_input.value,
   };
 
   // Clear input values
@@ -131,7 +128,12 @@ async function get_or_delete_button_click(get) {
   // Set up the URL with the parameters in the URL and fetch
   if(get) {
     let get_url = new URL("https://httpbin.org/get");
-    get_url.search = new URLSearchParams(input_object);
+    
+    // Don't need the id for get request
+    if(input_object.id != "") {
+      get_url.search = new URLSearchParams(input_object);
+    }
+    
     response = await fetch(get_url, {
       method: "GET",
       headers: {
