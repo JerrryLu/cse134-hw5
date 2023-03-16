@@ -3,5 +3,5 @@ form input, form textarea {
 }
 
 output {
-  white-space: pre;
+  white-space: pre-wrap;
 }

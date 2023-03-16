@@ -20,15 +20,8 @@ export function edit_required_inputs(add_required) {
 // Print out the object with 4 spaces as tabs
 export function write_output(response) {
   let response_output = document.getElementById("response");
-  let output_html = "Response:";
-
-  // Adds a disclaimer for changes made for readability
-  if(response.data) {
-    response.data = JSON.parse(response.data);
-    output_html += " (data field should be a JSON string but has been turned into an object for readbility)";
-  }
-  output_html += "\n\n";
-
+  let output_html = "Response:\n\n";
+  
   // Pretty prints with 4 spaces as tabs
   output_html += JSON.stringify(response, null, 4);
   
