@@ -4,4 +4,5 @@ form input, form textarea {
 
 output {
   white-space: pre-wrap;
+  word-wrap: break-word;
 }
