@@ -50,7 +50,7 @@ async function post_or_put_button_click(post) {
   let date_input = document.getElementById("date");
   date_input.value = new Date();
 
-  // Create POST body
+  // Create POST/PUT body
   let input_object = {
     id: id_input.value,
     article_name: article_name_input.value,
@@ -67,7 +67,7 @@ async function post_or_put_button_click(post) {
 
   let response;
   
-  // Set the ipnut object as the body and fetch
+  // Set the input object as the body and fetch
   if(post) {
     response = await fetch("https://httpbin.org/post", {
       method: "POST",
